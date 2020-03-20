@@ -1,0 +1,28 @@
+<launch>
+
+#全景分割节点
+<node 
+	pkg="ps_slam"
+	type="ps.py"
+	name="ps_node"
+	output="screen"/>
+
+#ORB-SLAM节点
+<node 
+	pkg="ps_slam"
+	type="orb_slam_node"
+	name="orb_slam_node"
+	output="screen"
+	args="/media/chen/chen/Robot/slam_ws/data/ORBvoc.txt /media/chen/chen/Robot/slam_ws/data/freiburg1.yaml" /> #视觉词典文件，参数文件
+
+
+#三维建图节点
+<node 
+	pkg="ps_slam"
+	type="mapper_node"
+	name="mapper_node"
+	output="screen"
+	args="/media/chen/chen/Robot/slam_ws/data/freiburg1.yaml" /> #参数文件
+
+
+</launch>
